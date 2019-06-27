@@ -46,7 +46,7 @@ Atividade 03
 
 Define a Hive Table
 
-Write a Hive query in a file named atividade01.hive that satifies:
+Write a Hive query in a file named atividade03.hive that satifies:
 
     Define a Hive table named flightdelays that matches the data stored in your /user/user_maria_dev/flightdelays_clean directory in HDFS. The Hive table should satisfy all of the following criteria:
         An external table with the location set to /user/user_maria_dev/flightdelays_clean
