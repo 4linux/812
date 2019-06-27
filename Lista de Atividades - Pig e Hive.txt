@@ -1,0 +1,113 @@
+Atividade 01
+
+Cleanse Data using Pig
+
+    Notice the comma-separated values of the flightdelays files in HDFS contain historical data for airline flight delays. 
+
+    The columns in the files match the following schema:
+    Year, Month, DayofMonth, DayOfWeek, DepTime, CRSDepTime, ArrTime, CRSArrTime,
+    UniqueCarrier, FlightNum, TailNum, ActualElapsedTime, CRSElapsedTime, AirTime,
+    ArrDelay, DepDelay, Origin, Dest, Distance, TaxiIn, TaxiOut, Cancelled, 
+    CancellationCode, Diverted, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay,
+    LateAircraftDelay                
+                    
+
+    Write a Pig script that satisfies all of the following criteria:
+    -  Load all of the data in /user/maria_dev/flightdelays/flight*
+    -  Remove all rows in the flightdelays data where the DepTime column equals the string "NA".
+    -  The output should only contain the Year, Month, DayofMonth, DepTime, UniqueCarrier, FlightNum, ArrDelay, Origin and Dest
+    -  Store the result as comma-separated records in a new directory in HDFS named /user/maria_dev/flightdelays_clean
+    -  Save the script in a file named atividade01.pig.
+
+
+Atividade 02
+
+Analyze Data using Pig
+
+ Part 1
+    Write a Pig script atividade02_parte1.pig that calculates the number of rows in the /user/maria_dev/flightdelays_clean files in HDFS. 
+    Store the output of your script in a new directory in HDFS named cleaned_total.
+    --------------------------------------------------------------------------------------
+ Part 2    
+    The Dest column is the destination airport code where the flight ends. 
+    Write a Pig script atividade02_parte2.pig
+    that calculates the number of rows in the /user/maria_dev/flightdelays_clean data 
+    where the Dest field equals the Denver airport code "DEN". 
+    Store the output of your script in a new directory in HDFS named denver_total.
+------------------------------------------------------------------------------------------------------------------------------
+ Part3    
+    The ArrDelay column is the number of minutes that a flight arrived late. 
+    Write a Pig script atividade02_parte3.pig that counts the number of 
+    flights whose Dest is the "DEN" airport that arrived 60 or more mintues late. 
+    Store the output of your script in a new directory in HDFS named denver_late
+
+
+Atividade 03
+
+Define a Hive Table
+
+    Define a Hive table named flightdelays that matches the data stored in your /user/user_maria_dev/flightdelays_clean directory in HDFS. The Hive table should satisfy all of the following criteria:
+        An external table with the location set to /user/user_maria_dev/flightdelays_clean
+        The schema matches the columns Year, Month, DayOfMonth, DepTime, UniqueCarrier, FlightNum, ArrDelay, Origin and Dest
+        The UniqueCarrier, Origin and Dest columns are string types; the other columns are all integers
+        
+        
+Atividade 04
+        
+Use HCatalog with Pig
+
+    Write a Pig script atividade04.pig that satisfies all of the following criteria:
+        Run the Pig query using Tez as the execution engine
+        Load the data from the flightdelays table in Hive using HCatalog
+        Remove any rows where the arrdelay is less than or equal to 0
+        Order the output by the arrdelay value descending
+        Store the output as three comma-separated files in a new directory in HDFS named /user/maria_dev/flightdelays_nonzero
+
+
+Atividade 05
+
+Analyzing Data with Hive
+
+    Write a Hive query in a file named atividade05.hive that satisfies each of the tasks below. Save the queries in a single text file named atividade01.hive:
+        Compute the average arrdelay of flights landing in Denver (dest equals "DEN")
+        Compute the average arrdelay of flights where the origin is LAX and the dest is SFO
+        Determine which dest airport had the highest average arrdelay
+
+
+Atividade 06
+
+Define and Populate an ORCFile Table
+
+    Write a Hive query in a file named atividade06.hive that satisfies the following criteria:
+
+        A Hive table named sfo_weather that satisfies all of the following criteria:
+        A Hive-managed table
+        The data is stored in the ORCFile format
+        The table is populated with the records in the sfo_weather.csv file on the client machine.
+        The schema matches the columns in sfo_weather.csv - 
+          the first column is a string named station_name, 
+          followed by integers for the Year, Month, DayOfMonth, precipitation, temperature_max, and temperature_min
+
+Atividade 07
+
+Hive Join
+
+    Write a Hive query in a file named atividade07.hive that satisfies the following criteria:
+        Use Tez as the execution engine
+        The result of the query is in a new Hive-managed table named flights_weather stored as a textfile
+        Join the flightdelays table with the sfo_weather table where dest or origin equals "SFO" in flightdelays, 
+        and the year, month and dayofmonth are equal in the two tables
+        Select all columns from the flightdelays table, and the temperature_max and temperature_min columns from sfo_weather
+
+Atividade 08
+
+Hive Partitioned Tables
+
+    Write a Hive query in a file named atividade08.hive that satisfies the following criteria:
+        Define a new Hive-managed table named weather_partitioned that has the same schema as the sfo_weather table
+        The table is partitioned on the year and month columns
+        The data is stored in the ORCFile format
+        Insert the records from January, 2008, of the sfo_weather table into the appropriate partition of weather_partitioned
+        
+
+
