@@ -1,0 +1,21 @@
+id,nome,cargo,salario,departamento,datadeadmissao
+1,"Marcio Santos","Analista",5000.00,"Projetos",2010-01-04
+2,"Bruno Garcia","Instrutor",4000.00,"Treinamento",2010-01-06
+3,"Celia Silva","Vendedora",,,2011-02-07
+4,"Beatriz Dias","Gerencia",5500.00,"Recursos Humanos",2011-09-22
+5,"Sandro Correia","Instrutor",4200.00,"Treinamento",2012-02-15
+6,"Leticia Dias","Analista",,"Projetos",2012-04-26
+7,"Cacio Farias","Analista",5100.00,"Projetos",2012-10-25
+8,"Cezar Maia","Gerencia",7000.00,,2014-02-21
+9,"Amanda Nunes","Vendedora",3500.00,"Vendas",2014-02-28
+10,"Paula Priore","Vendedora",3500.00,"Vendas",2014-03-07
+11,"Carla Neto","Analista",4000.00,"Projetos",2015-02-17
+12,"Marcia Costa","Vendedora",,,2015-02-17
+13,"Luciana Prado","Analista",4100.00,"Recursos Humanos",2015-09-17
+14,"Roberta Amaral","Vendedora",2800.00,"Vendas",2015-10-17
+15,"Rogerio Ribeiro","Instrutor",4000.00,"Treinamento",2010-08-04
+16,"Rosana Rocha","Vendedora",,"Vendas",2010-09-04
+17,"Claudio Queiroz","Analista",6500.00,"Projetos",2011-01-04
+18,"Diego Chaves","Gerencia",7500.00,"Administracao",2009-10-25
+19,"Sergio Nogueira","Instrutor",5300.00,"Treinamento",2008-10-25
+20,"Samantha Reis","Vendedora",4000.00,"Vendas",2007-12-03
