@@ -1,0 +1,20 @@
+1,Marcio Santos,Analista,5000,Projetos
+2,Bruno Garcia,Instrutor,4000,Treinamento
+3,Celia Silva,Vendedora,4800,Vendas
+4,Beatriz Dias,Gerencia,5500,Recursos Humanos
+5,Sandro Correia,Instrutor,4200,Treinamento
+6,Leticia Santana,Analista,5100,Projetos
+7,Cacio Farias,Analista,5100,Projetos
+8,Cezar Maia,Gerencia,7000,Administracao
+9,Amanda Nunes,Vendedora,3500,Vendas
+10,Paula Priore,Vendedora,3700,Vendas
+11,Carla Neto,Analista,4000,Projetos
+12,Marcia Costa,Vendedora,2700,Vendas
+13,Luciana Prado,Analista,4100,Recursos Humanos
+14,Roberta Amaral,Vendedora,2800,Vendas
+15,Rogerio Ribeiro,Instrutor,4000,Treinamento
+16,Rosana Rocha,Vendedora,3000,Vendas
+17,Claudio Queiroz,Analista,6500,Projetos
+18,Diego Chaves,Gerencia,7500,Administracao
+19,Sergio Nogueira,Instrutor,5300,Treinamento
+20,Samantha Reis,Vendedora,4000,Vendas
