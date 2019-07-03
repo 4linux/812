@@ -1,0 +1,20 @@
+{"id_func":1, "nome":"Marcio Santos", "cargo":"Analista", "salario":5000, "departamento":"Projetos"}
+{"id_func":2, "nome":"Bruno Garcia", "cargo":"Instrutor", "salario":4000, "departamento":"Treinamento"}
+{"id_func":3, "nome":"Celia Silva", "cargo":"Vendedora", "salario":3500, "departamento":"Vendas"}
+{"id_func":4, "nome":"Beatriz Dias", "cargo":"Gerencia", "salario":5500, "departamento":"Recursos Humanos"}
+{"id_func":5, "nome":"Sandro Correia", "cargo":"Instrutor", "salario":4200, "departamento":"Treinamento"}
+{"id_func":6, "nome":"Leticia Dias", "cargo":"Analista", "salario":5100, "departamento":"Projetos"}
+{"id_func":7, "nome":"Cacio Farias", "cargo":"Analista", "salario":5100, "departamento":"Projetos"}
+{"id_func":8, "nome":"Cezar Maia", "cargo":"Gerencia", "salario":7000, "departamento":"Administracao"}
+{"id_func":9, "nome":"Amanda Nunes", "cargo":"Vendedora", "salario":3500, "departamento":"Vendas"}
+{"id_func":10, "nome":"Paula Priore", "cargo":"Vendedora", "salario":3500, "departamento":"Vendas"}
+{"id_func":11, "nome":"Carla Neto", "cargo":"Analista", "salario":4000, "departamento":"Projetos"}
+{"id_func":12, "nome":"Marcia Costa", "cargo":"Vendedora", "salario":2700, "departamento":"Vendas"}
+{"id_func":13, "nome":"Luciana Prado", "cargo":"Analista", "salario":4100, "departamento":"Recursos Humanos"}
+{"id_func":14, "nome":"Roberta Amaral", "cargo":"Vendedora", "salario":2800, "departamento":"Vendas"}
+{"id_func":15, "nome":"Rogerio Ribeiro", "cargo":"Instrutor", "salario":4000, "departamento":"Treinamento"}
+{"id_func":16, "nome":"Rosana Rocha", "cargo":"Vendedora", "salario":3000, "departamento":"Vendas"}
+{"id_func":17, "nome":"Claudio Queiroz", "cargo":"Analista", "salario":6500, "departamento":"Projetos"}
+{"id_func":18, "nome":"Diego Chaves", "cargo":"Gerencia", "salario":7500, "departamento":"Administracao"}
+{"id_func":19, "nome":"Sergio Nogueira", "cargo":"Instrutor", "salario":5300, "departamento":"Treinamento"}
+{"id_func":20, "nome":"Samantha Reis", "cargo":"Vendedora", "salario":4000, "departamento":"Vendas"}
