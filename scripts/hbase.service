@@ -1,0 +1,21 @@
+[Unit]
+Description=Hadoop DataBase and DataStore
+After=syslog.target network.target remote-fs.target nss-lookup.target network-online.target
+Requires=network-online.target
+After=hdfs.service yarn.service jobhistory.service
+
+[Service]
+User=hduser
+Group=hadoop
+Type=forking
+ExecStart=/usr/local/hbase/bin/start-hbase.sh
+ExecStop=/usr/local/hbase/bin/stop-hbase.sh
+WorkingDirectory=/usr/local/hbase
+Environment=JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+Environment=HBASE_MANAGES_ZK=true
+Environment=HBASE_OPTS="-XX:+UseConcMarkSweepGC"
+TimeoutStartSec=5min
+PIDFile=/tmp/hbase-hduser-master.pid
+
+[Install]
+WantedBy=multi-user.target

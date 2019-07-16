@@ -1,0 +1,23 @@
+[Unit]
+Description=Zeppelin Data Visualization
+After=syslog.target network.target remote-fs.target nss-lookup.target network-online.target
+Requires=network-online.target
+After=hdfs.service yarn.service jobhistory.service hive-metastore.service hive-service2.service hbase.service spark.service oozie.service
+
+[Service]
+User=hduser
+Group=hadoop
+ExecStart=/usr/local/zeppelin/bin/zeppelin.sh start
+ExecStop=/usr/local/zeppelin/bin/zeppelin.sh stop
+WorkingDirectory=/usr/local/zeppelin
+Environment=JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+Environment=HADOOP_HOME=/usr/local/hadoop
+Environment=HADOOP_CONF_DIR=/usr/local/hadoop/etc/hadoop
+Environment=MASTER=spark://namenode:7077
+Environment=SPARK_HOME=/usr/local/spark
+Environment=HBASE_HOME=/usr/local/hbase
+Environment=HBASE_CONF_DIR=/usr/local/hbase/conf
+PIDFile=/usr/local/zeppelin/run/zeppelin-hduser-namenode.pid
+
+[Install]
+WantedBy=multi-user.target

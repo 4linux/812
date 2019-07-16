@@ -1,0 +1,21 @@
+[Unit]
+Description=Livy Server
+After=syslog.target network.target remote-fs.target nss-lookup.target network-online.target
+Requires=network-online.target
+After=hdfs.service yarn.service jobhistory.service spark.service
+
+[Service]
+User=hduser
+Group=hadoop
+Type=forking
+ExecStart=/usr/local/livy-server/bin/livy-server start
+ExecStop=/usr/local/livy-server/bin/livy-server stop
+WorkingDirectory=/usr/local/livy-server
+Environment=JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+Environment=HADOOP_HOME=/usr/local/hadoop
+Environment=HADOOP_CONF_DIR=/usr/local/hadoop/etc/hadoop
+TimeoutStartSec=2min
+PIDFile=/tmp/livy-hduser-server.pid
+
+[Install]
+WantedBy=multi-user.target

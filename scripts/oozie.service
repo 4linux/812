@@ -1,0 +1,21 @@
+[Unit]
+Description=OOzie Workflow Scheduler
+After=syslog.target network.target remote-fs.target nss-lookup.target network-online.target
+Requires=network-online.target
+After=hdfs.service yarn.service jobhistory.service hive-metastore.service hive-service2.service hbase.service spark.service
+
+[Service]
+User=hduser
+Group=hadoop
+Type=forking
+ExecStart=/usr/local/oozie/bin/oozied.sh start
+ExecStop=/usr/local/oozie/bin/oozied.sh stop
+WorkingDirectory=/usr/local/oozie
+Environment=JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+Environment=HADOOP_HOME=/usr/local/hadoop
+Environment=HADOOP_CONF_DIR=/usr/local/hadoop/etc/hadoop
+TimeoutStartSec=2min
+PIDFile=/usr/local/oozie/oozie-server/temp/oozie.pid
+
+[Install]
+WantedBy=multi-user.target

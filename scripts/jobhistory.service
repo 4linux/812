@@ -1,0 +1,17 @@
+[Unit]
+Description=Hadoop JobHistory Server
+After=syslog.target network.target remote-fs.target nss-lookup.target network-online.target
+Requires=network-online.target
+
+[Service]
+User=hduser
+Group=hadoop
+ExecStart=/usr/local/hadoop/sbin/mr-jobhistory-daemon.sh start historyserver
+ExecStop=/usr/local/hadoop/sbin/mr-jobhistory-daemon.sh stop historyserver
+WorkingDirectory=/usr/local/hadoop
+Environment=JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+Environment=HADOOP_HOME=/usr/local/hadoop
+PIDFile=/tmp/mapred-hduser-historyserver.pid
+
+[Install]
+WantedBy=multi-user.target
