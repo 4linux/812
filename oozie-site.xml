@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<configuration>
+  <property>
+    <name>oozie.action.max.output.data</name>
+    <value>20480</value>
+  </property>
+  <property>
+    <name>oozie.credentials.credentialclasses</name>
+    <value>hcat=org.apache.oozie.action.hadoop.HCatCredentials</value>
+  </property>
+  <property>
+    <name>oozie.email.smtp.host</name>
+    <value>mail-server</value>
+  </property>
+  <property>
+    <name>oozie.email.from.address</name>
+    <value>oozie@dexter.com.br</value>
+  </property>
+  <property>
+    <name>oozie.processing.timezone</name>
+    <value>GMT+0300</value>
+  </property>
+</configuration>
