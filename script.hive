@@ -1,0 +1,97 @@
+DROP TABLE IF EXISTS funcionarios;
+
+CREATE TABLE funcionarios (id_func int, nome string, cargo
+string, salario int, departamento string) ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ',';
+
+LOAD DATA LOCAL INPATH
+'/home/maria_dev/4812/funcionarios.txt' INTO TABLE funcionarios;
+
+DROP TABLE IF EXISTS funcionarios_hdfs1;
+
+CREATE EXTERNAL TABLE funcionarios_hdfs1 (id_func int, nome
+string, cargo string, salario int, departamento string) ROW FORMAT
+DELIMITED FIELDS TERMINATED BY ',' LOCATION
+'/user/maria_dev/funcionarios/';
+
+DROP TABLE IF EXISTS funcionarios_hdfs2;
+
+CREATE EXTERNAL TABLE funcionarios_hdfs2 (ID int,Nome
+string, Cargo string, Salario int, Departamento string) ROW FORMAT
+DELIMITED FIELDS TERMINATED BY ',' STORED AS TEXTFILE;
+
+LOAD DATA INPATH
+'hdfs:/user/maria_dev/funcionarios.txt' INTO TABLE
+funcionarios_hdfs2;
+
+DROP TABLE IF EXISTS vendas_dexter;
+
+CREATE EXTERNAL TABLE vendas_dexter (id_cli int, cliente
+string, tipo_curso string, data_venda date, valor_venda int,
+id_vend int) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LOCATION
+'/user/maria_dev/vendas';
+
+DROP TABLE IF EXISTS func_dexter;
+
+CREATE EXTERNAL TABLE func_dexter (id_func int, nome string,
+cargo string, salario int, departamento string) ROW FORMAT
+DELIMITED FIELDS TERMINATED BY ',' LOCATION
+'/user/maria_dev/funcionarios';
+
+DROP TABLE IF EXISTS funcionarios_analistas;
+
+CREATE EXTERNAL TABLE funcionarios_analistas (id_func int,
+nome string, cargo string, salario int, departamento string) ROW
+FORMAT DELIMITED FIELDS TERMINATED BY '\t';
+
+INSERT OVERWRITE TABLE funcionarios_analistas SELECT * FROM
+funcionarios WHERE cargo == 'Analista';
+
+DROP TABLE IF EXISTS vendas_2015;
+
+CREATE EXTERNAL TABLE vendas_2015 (id_cli int, cliente
+string, tipo_curso string, data_venda date, valor_venda int,
+id_vend int) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t';
+
+INSERT OVERWRITE TABLE vendas_2015 SELECT * FROM
+vendas_dexter WHERE data_venda >= '2015-01-01' AND data_venda <=
+'2015-12-31';
+
+DROP TABLE IF EXISTS vendas_2016;
+
+CREATE EXTERNAL TABLE vendas_2016 (id_cli int, cliente
+string, tipo_curso string, data_venda date, valor_venda int,
+id_vend int) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t';
+
+INSERT OVERWRITE TABLE vendas_2016 SELECT * FROM
+vendas_dexter WHERE data_venda >= '2016-01-01' AND data_venda <=
+'2016-12-31';
+
+DROP TABLE IF EXISTS rel_vendas;
+
+CREATE TABLE rel_vendas (id_cli int, cliente string,
+tipo_curso string, data_venda date, valor_venda int, id_vend int)
+PARTITIONED BY (ano string) ROW FORMAT DELIMITED FIELDS TERMINATED
+BY '\t' STORED AS TEXTFILE;
+
+LOAD DATA INPATH '/apps/hive/warehouse/vendas_2015' INTO
+TABLE rel_vendas PARTITION (ano = '2015');
+
+LOAD DATA INPATH '/apps/hive/warehouse/vendas_2016' INTO
+TABLE rel_vendas PARTITION (ano = '2016');
+
+DROP TABLE IF EXISTS vendas_tipo_curso;
+
+CREATE TABLE vendas_tipo_curso AS SELECT id_cli, cliente,
+data_venda, valor_venda, id_vend, tipo_curso FROM vendas_dexter;
+
+DROP TABLE IF EXISTS vendas_tipo_curso_partition;
+
+CREATE TABLE vendas_tipo_curso_partition (id_cli int,
+cliente string, data_venda string, valor_venda int, id_vend int)
+PARTITIONED BY (tipo_curso string) ROW FORMAT DELIMITED FIELDS
+TERMINATED BY '\t' LINES TERMINATED BY '\n';
+
+INSERT INTO TABLE vendas_tipo_curso_partition PARTITION
+(tipo_curso) SELECT * FROM vendas_tipo_curso;
+
