@@ -1,0 +1,51 @@
+<workflow-app xmlns = "uri:oozie:workflow:0.5" name = "simple-Workflow">
+   <start to = "fork_node" />
+   
+   <fork name = "fork_node">
+      <path start = "Create_External_Table"/>
+      <path start = "Create_orc_Table"/>
+   </fork>
+   
+   <action name = "Create_External_Table">
+      <hive xmlns = "uri:oozie:hive-action:0.6">
+         <job-tracker>${resourceManager}</job-tracker>
+         <name-node>${nameNode}</name-node>
+         <script>/user/maria_dev/app/external.hive</script>
+      </hive>
+      
+      <ok to = "join_node" />
+      <error to = "kill_job" />
+   </action>
+   
+   <action name = "Create_orc_Table">
+      <hive xmlns = "uri:oozie:hive-action:0.6">
+         <job-tracker>${resourceManager}</job-tracker>
+         <name-node>${nameNode}</name-node>
+         <script>/user/maria_dev/app/orc.hive</script>
+      </hive>
+		
+      <ok to = "join_node" />
+      <error to = "kill_job" />
+   </action>
+   
+   <join name = "join_node" to = "Insert_into_Table"/>
+	
+   <action name = "Insert_into_Table">
+      <hive xmlns = "uri:oozie:hive-action:0.6">
+         <job-tracker>${resourceManager}</job-tracker>
+         <name-node>${nameNode}</name-node>
+         <script>/user/maria_dev/app/Copydata.hive</script>
+         <param>database_name</param>
+      </hive>
+		
+      <ok to = "end" />
+      <error to = "kill_job" />
+   </action>
+   
+   <kill name = "kill_job">
+      <message>Job failed</message>
+   </kill>
+   
+   <end name = "end" />
+	
+</workflow-app>

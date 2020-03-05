@@ -1,0 +1,10 @@
+Create external table external_table(
+   name string,
+   age int,
+   address string,
+   zip int
+)
+row format delimited
+fields terminated by ','
+stored as textfile
+location '/test/abc';
