@@ -1,0 +1,9 @@
+Create Table orc_table(
+   name string, -- Concate value of first name and last name with space as seperator
+   yearofbirth int,
+   age int, -- Current year minus year of birth
+   address string,
+   zip int
+)
+STORED AS ORC
+;
