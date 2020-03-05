@@ -1,0 +1,2 @@
+INSERT INTO TABLE sfo_weather SELECT * FROM sfo_weather_txt;
+
