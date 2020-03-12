@@ -1,0 +1,7 @@
+1,Ramesh,32,Ahmedabad,2000 
+2,Khilan,25,Delhi,150 
+3,kaushik,23,Kota,2000 
+4,Chaitali,25,Mumbai,6500 
+5,Hardik,27,Bhopal,8500 
+6,Komal,22,MP,4500 
+7,Muffy,24,Indore,10000
